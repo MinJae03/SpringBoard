@@ -11,7 +11,8 @@
 <%@ include file="../include/menu.jsp" %>
     <c:if test="${msg == 'success'}">
     <h2>${sessionScope.userName}(${sessionScope.userId})님 환영합니다.</h2>
-    </c:if>
     <a href="${path}/board/boardList.do" class="board">게시판으로 이동</a>
+    </c:if>
+
 </body>
 </html>

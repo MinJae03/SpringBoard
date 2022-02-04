@@ -37,7 +37,7 @@ public class MemberController {
         boolean result = memberService.loginCheck(vo, session);
         ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
-            // main.jsp로 이동
+            // home.jsp로 이동
             mav.setViewName("login/home");
             mav.addObject("msg", "success");
         } else {    // 로그인 실패
