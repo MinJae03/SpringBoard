@@ -7,7 +7,7 @@
 <title>로그인페이지</title>
 <%@ include file="../include/header.jsp"%>
 <script>
-	$(document).ready(function() {//login.jsp의 로딩(html부분)이 끝나고 밑의 해당 코드들을 실행준비 시킨다(동작 순서를 본문 내용 뒤로 이동시킨다)
+	/* $(document).ready(function() {//login.jsp의 로딩(html부분)이 끝나고 밑의 해당 코드들을 실행준비 시킨다(동작 순서를 본문 내용 뒤로 이동시킨다)
 		$("#btnLogin").click(function() {//btnLogin의 id를 가지는 버튼이 눌리면 아래 내용을 실행한다
 			// 태크.val() : 태그에 입력된 값
 			// 태크.val("값") : 태그의 값을 변경 
@@ -28,7 +28,43 @@
 			// 제출
 			document.form1.submit();//form1의 내용을 action에서 지정한 url로 제출한다
 		});
+	}); */
+	$(function(){//≒$(document).ready(function() {}
+		$("#btnLogin").click(function(){
+			submitCheck();
+		});
 	});
+	function submitCheck() {
+		var userId = $("#userId").val();//userId 변수에 userId의 id를 가지는 값을 가져와 저장한다
+		var userPw = $("#userPw").val();//userPw 변수에 userPw의 id를 가지는 값을 가져와 저장한다
+		if(userId==""){
+			alert('아이디를 입력해주세요');
+			$("#userId").focus();
+			return;
+		}
+		else if(userPw==""){
+			alert('비밀번호를 입력해주세요');
+			$("#userPw").focus();
+			return;
+		}
+		$.ajax({
+			type : "POST",
+			url : '${path}/member/loginCheck.do',
+			data : {userId:userId, userPw:userPw},
+			success : function(data){
+				if(data=="false")
+					alert('잘못된 아이디이거나, 비밀번호가 틀렸습니다.');
+				else
+					location.href="/board/boardList.do";
+			}
+		});
+	}
+	
+	$("#userPw").keydown(function(key){
+		if(key.keyCode == 13){
+			$('submitBtn').click();
+		}
+	})
 </script>
 <link
 	href="${pageContext.request.contextPath}/resources/css/loginstyle.css"
@@ -41,15 +77,19 @@
 		<table border="1" width="400px">
 			<tr>
 				<td>아이디</td>
-				<td><input name="userId" id="userId"></td>
+				<td><input name="userId" id="userId" class="loginInput"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="userPw" id="userPw"></td>
+				<td><input type="password" name="userPw" id="userPw" class="loginInput"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><a type="button" id="btnLogin"
-					class="btn">로그인</a> <a href="${path}/member/write.do" class="btn">회원가입</a>
+				<td>
+					<input type="button" id="btnLogin" class="btn" value="로그인">
+				</td>
+				<td>
+					<a href="${path}/member/write.do" class="btn">회원가입</a>
+				</td>
 			<tr>
 				<td>
 					<div></div>
