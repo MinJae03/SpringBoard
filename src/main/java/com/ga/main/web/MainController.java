@@ -23,7 +23,7 @@ public class MainController {
      // model : 데이터를 담는 그릇 역할, map구조로 저장된다.
      // model.addAttribute("변수명", 값);
      model.addAttribute("msg", "홈페이지 방문을 환영합니다!");
-     return "redirect:/member/login.do"; // login.do로 이동(MemberController 로그인 화면으로)
+     return "redirect:/login/login.do"; // login.do로 이동(MemberController 로그인 화면으로)
  }
  
  

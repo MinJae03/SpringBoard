@@ -25,38 +25,6 @@ public class MemberController {
     @Inject
     MemberService memberService;
     
-    // 01. 로그인 화면 
-    @RequestMapping("login.do")
-    public String login(){
-        return "member/login";    // views/member/login.jsp로 포워드
-    }
-    
- // 02. 로그인 처리
-    @RequestMapping("loginCheck.do")
-    public ModelAndView loginCheck(@ModelAttribute MemberVO vo, HttpSession session){
-        boolean result = memberService.loginCheck(vo, session);
-        ModelAndView mav = new ModelAndView();
-        if (result == true) { // 로그인 성공
-            // home.jsp로 이동
-            mav.setViewName("login/home");
-            mav.addObject("msg", "success");
-        } else {    // 로그인 실패
-            // login.jsp로 이동
-            mav.setViewName("member/login");
-            mav.addObject("msg", "failure");
-        }
-        return mav;
-    }
- // 03. 로그아웃 처리
-    @RequestMapping("logout.do")
-    public ModelAndView logout(HttpSession session){
-        memberService.logout(session);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("member/login");
-        mav.addObject("msg", "logout");
-        return mav;
-    }
-    
     // 01 회원 목록
     // url pattern mapping
     @RequestMapping("member/list.do")
@@ -87,6 +55,6 @@ public class MemberController {
         // /member/list.do : 루트 디렉토리를 기준
         // member/list.do : 현재 디렉토리를 기준
         // member_list.jsp로 리다이렉트
-        return "redirect:/member/login.do";
+        return "redirect:/login/login.do";
     }
 }

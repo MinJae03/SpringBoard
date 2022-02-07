@@ -49,7 +49,7 @@
 		}
 		$.ajax({
 			type : "POST",
-			url : '${path}/member/loginCheck.do',
+			url : '${path}/login/loginCheck.do',
 			data : {userId:userId, userPw:userPw},
 			success : function(data){
 				if(data=="false")

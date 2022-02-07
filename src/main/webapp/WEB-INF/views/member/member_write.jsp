@@ -34,7 +34,7 @@
                 <td colspan="2" align="center">
                     <input type="submit" value="확인" class="btn">
                     <input type="reset" value="전체재입력" class="btn">
-                    <a href="${path}/member/login.do"><input type="button" value="뒤로가기" class="btn"></a>
+                    <a href="${path}/login/login.do"><input type="button" value="뒤로가기" class="btn"></a>
                 </td>
             </tr>
         </table>
