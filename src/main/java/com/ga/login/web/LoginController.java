@@ -30,11 +30,16 @@ public class LoginController {
     @RequestMapping("loginCheck.do")
     public void loginCheck(@ModelAttribute MemberVO vo, HttpSession session, HttpServletResponse response) throws IOException{
     	String salt=loginService.getSaltById(vo);
-    	String pwd=vo.getUserPw();
+    	boolean result;
+    	if(salt==null) {
+    		result = false;
+    	}else {
+    		String pwd=vo.getUserPw();
+        	pwd=SHA256Util.getEncrypt(pwd, salt);
+        	vo.setUserPw(pwd);
+        	result = loginService.loginCheck(vo, session);
+    	}
     	
-    	pwd=SHA256Util.getEncrypt(pwd, salt);
-    	vo.setUserPw(pwd);
-    	boolean result = loginService.loginCheck(vo, session);
         if (result == true) { // 로그인 성공시 true 반환
         	response.getWriter().print(true) ;
         } else {    // 로그인 실패시 false 반환
