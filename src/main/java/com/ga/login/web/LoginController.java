@@ -1,6 +1,9 @@
 package com.ga.login.web;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -24,19 +27,15 @@ public class LoginController {
     
  // 02. 로그인 처리
     @RequestMapping("loginCheck.do")
-    public ModelAndView loginCheck(@ModelAttribute MemberVO vo, HttpSession session){
+    public void loginCheck(@ModelAttribute MemberVO vo, HttpSession session, HttpServletResponse response) throws IOException{
         boolean result = loginService.loginCheck(vo, session);
         ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
-            // home.jsp로 이동
-            mav.setViewName("login/home");
-            mav.addObject("msg", "success");
+        	response.getWriter().print(true) ;
         } else {    // 로그인 실패
             // login.jsp로 이동
-            mav.setViewName("member/login");
-            mav.addObject("msg", "failure");
+        	response.getWriter().print(false) ;
         }
-        return mav;
     }
  // 03. 로그아웃 처리
     @RequestMapping("logout.do")

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ga.member.service.MemberVO;
 import com.ga.member.service.impl.MemberService;
+import com.ga.util.SHA256Util;
 
 @Controller // 현재의 클래스를 controller bean에 등록시킴
 @RequestMapping("member/*")
@@ -49,7 +50,12 @@ public class MemberController {
     //public String memberInsert(HttpServlet request){
     //public String memberInsert(String userId, String userPw, String userName, String userEmail){
     public String memberInsert(@ModelAttribute MemberVO vo) throws Exception{
-        // 테이블에 레코드 입력
+	   	String salt=SHA256Util.generateSalt();
+	   	vo.setSalt(salt);
+	   	String pwd=vo.getUserPw();
+	   	pwd=SHA256Util.getEncrypt(pwd, salt);
+	   	vo.setUserPw(pwd);
+	    // 테이블에 레코드 입력
         memberService.insertMember(vo);
         // * (/)의 유무에 차이
         // /member/list.do : 루트 디렉토리를 기준

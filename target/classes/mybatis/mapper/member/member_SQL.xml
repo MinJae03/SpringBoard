@@ -17,9 +17,9 @@
 
 	<insert id="insertMember">
 		INSERT INTO tbl_member
-		(user_id, user_pw, user_name, user_email)
+		(user_id, user_pw, user_name, user_email,salt)
 		VALUES
-		(#{userId}, #{userPw}, #{userName}, #{userEmail})
+		(#{userId}, #{userPw}, #{userName}, #{userEmail},#{salt})
 	</insert>
 	
 	<select id="loginCheck" resultType="String">
