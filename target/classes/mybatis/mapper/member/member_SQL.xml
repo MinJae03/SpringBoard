@@ -36,5 +36,8 @@
         FROM tbl_member
         WHERE user_id = #{userId} AND user_pw = #{userPw}
     </select>
+    <select id="getSaltById" resultType="String">
+        SELECT SALT AS salt FROM tbl_member WHERE user_id=#{userId}
+    </select>
 </mapper>
 

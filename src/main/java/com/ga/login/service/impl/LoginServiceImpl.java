@@ -38,5 +38,10 @@ public class LoginServiceImpl implements LoginService{
 	     // 세션 정보를 초기화 시킴
 	     session.invalidate();
 	 }
+	 //salt값 가져오기
+	@Override
+	public String getSaltById(MemberVO vo) {
+		return loginDao.getSaltById(vo);
+	}
 
 }

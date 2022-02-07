@@ -28,4 +28,8 @@ public class LoginDAOImpl implements LoginDAO{
     @Override
     public void logout(HttpSession session) {
     }
+	@Override
+	public String getSaltById(MemberVO vo) {
+		return sqlSession.selectOne("member.getSaltById",vo);
+	}
 }
