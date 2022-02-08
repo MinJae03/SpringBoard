@@ -2,6 +2,7 @@ package com.ga.board.web;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
  
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ga.board.service.BoardVO;
 import com.ga.board.service.impl.BoardService;
+import com.ga.util.Criteria;
+import com.ga.util.PageMaker;
  
 @Controller
 public class BoardController {
@@ -29,12 +32,15 @@ public class BoardController {
      * @throws Exception
      */
     @RequestMapping(value="/board/boardList.do")
-    public String boardList(@ModelAttribute("boardVO") BoardVO boardVO, Model model) throws Exception{
-                
-        List<BoardVO> list = boardServiceImpl.selectBoardList(boardVO);
+    public String boardList(Model model, Criteria cri) throws Exception{
+        PageMaker pageMaker=new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(13);
+        
+        List<Map<String, Object>> list = boardServiceImpl.selectBoardList(cri);
         
         model.addAttribute("list", list);
-        
+        model.addAttribute("pageMaker",pageMaker);
         return "board/boardList";
     }
     

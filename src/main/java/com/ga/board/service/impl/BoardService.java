@@ -1,8 +1,10 @@
 package com.ga.board.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ga.board.service.BoardVO;
+import com.ga.util.Criteria;
  
 public interface BoardService {
  
@@ -12,7 +14,7 @@ public interface BoardService {
      * @return
      * @throws Exception
      */
-    public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception;
+    public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception;
     
     /**
      * 게시물 작성
@@ -42,4 +44,5 @@ public interface BoardService {
      * @throws Exception
      */
     public BoardVO selectBoardByCode(BoardVO boardVO) throws Exception;
+
 }

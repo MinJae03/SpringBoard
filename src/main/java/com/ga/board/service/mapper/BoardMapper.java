@@ -1,13 +1,15 @@
 package com.ga.board.service.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ga.board.service.BoardVO;
+import com.ga.util.Criteria;
  
 public interface BoardMapper {
  
     // 게시물 리스트 조회
-    public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception;
+    public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception;
     
     // 게시물 등록
     public void insertBoard(BoardVO boardVO) throws Exception;

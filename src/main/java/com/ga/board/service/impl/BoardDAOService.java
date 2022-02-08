@@ -1,6 +1,7 @@
 package com.ga.board.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
  
 import com.ga.board.service.BoardVO;
 import com.ga.board.service.mapper.BoardMapper;
+import com.ga.util.Criteria;
  
 @Service("boardDAOService")
 public class BoardDAOService implements BoardDAO{
@@ -15,9 +17,9 @@ public class BoardDAOService implements BoardDAO{
     @Autowired
     private SqlSession sqlSession;
     
-    public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception {
+    public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-        return mapper.selectBoardList(boardVO);
+        return mapper.selectBoardList(cri);
     }
  
     public void insertBoard(BoardVO boardVO) throws Exception {
@@ -40,4 +42,5 @@ public class BoardDAOService implements BoardDAO{
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         return mapper.selectBoardByCode(boardVO);
     }
+
 }

@@ -6,7 +6,10 @@
 <mapper namespace="com.ga.board.service.mapper.BoardMapper">
     
     <select id="selectBoardList" parameterType="com.ga.board.service.BoardVO" resultType="com.ga.board.service.BoardVO">
-        select * from board
+        <![CDATA[
+        SELECT @ROWNUM:=@ROWNUM+1 AS num, A.*
+		FROM board as A, (SELECT @ROWNUM:=0) R ORDER BY num DESC LIMIT #{pageStart}, #{perPageNum}
+        ]]>
     </select>
     
     <insert id="insertBoard">
@@ -44,4 +47,9 @@
         where
             code = #{code}
     </select>
+    <select id="countBoardList" resultType="Integer">
+	    <![CDATA[
+	        SELECT count(*) FROM board
+	    ]]>
+	</select>
 </mapper>

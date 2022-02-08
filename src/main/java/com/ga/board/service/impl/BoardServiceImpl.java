@@ -1,11 +1,13 @@
 package com.ga.board.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import com.ga.board.service.BoardVO;
+import com.ga.util.Criteria;
  
 @Service("boardServiceImpl")
 public class BoardServiceImpl implements BoardService{
@@ -14,9 +16,9 @@ public class BoardServiceImpl implements BoardService{
     private BoardDAO boardDAOService;
     
     @Override
-    public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception {
-        List<BoardVO> list = null;
-        list = boardDAOService.selectBoardList(boardVO);
+    public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception {
+        List<Map<String, Object>> list = null;
+        list = boardDAOService.selectBoardList(cri);
         return list;
     }
  
@@ -42,5 +44,7 @@ public class BoardServiceImpl implements BoardService{
         
         return resultVO; 
     }
+
+
  
 }
