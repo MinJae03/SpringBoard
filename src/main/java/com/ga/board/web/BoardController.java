@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ga.board.service.BoardVO;
 import com.ga.board.service.impl.BoardService;
@@ -32,16 +32,22 @@ public class BoardController {
      * @throws Exception
      */
     @RequestMapping(value="/board/boardList.do")
-    public String boardList(Model model, Criteria cri) throws Exception{
-        PageMaker pageMaker=new PageMaker();
-        pageMaker.setCri(cri);
-        pageMaker.setTotalCount(13);
-        
-        List<Map<String, Object>> list = boardServiceImpl.selectBoardList(cri);
-        
-        model.addAttribute("list", list);
-        model.addAttribute("pageMaker",pageMaker);
-        return "board/boardList";
+    public ModelAndView boardList(Criteria cri) throws Exception{
+//        PageMaker pageMaker=new PageMaker();
+//        pageMaker.setCri(cri);
+//		pageMaker.setTotalCount(/* 13 */ boardServiceImpl.countBoardListTotal() );
+//        
+//        List<Map<String, Object>> list = boardServiceImpl.selectBoardList(cri);
+//        
+//        model.addAttribute("list", list);
+//        model.addAttribute("pageMaker",pageMaker);
+//        return "board/boardList";
+    	ModelAndView mav = new ModelAndView("/board/boardList");
+    	
+    	PageMaker pageMaker = new PageMaker();
+    	pageMaker.setCri(cri);
+    	pageMaker.setTotalCount(100);
+    	return mav;
     }
     
     /**

@@ -44,7 +44,4 @@ public class BoardServiceImpl implements BoardService{
         
         return resultVO; 
     }
-
-
- 
 }

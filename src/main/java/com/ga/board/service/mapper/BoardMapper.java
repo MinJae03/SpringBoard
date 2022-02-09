@@ -22,5 +22,4 @@ public interface BoardMapper {
  
     // 게시물 조회
     public BoardVO selectBoardByCode(BoardVO boardVO) throws Exception;
-    
 }

@@ -16,7 +16,7 @@ public class BoardDAOService implements BoardDAO{
     
     @Autowired
     private SqlSession sqlSession;
-    
+    @SuppressWarnings("unchecked")
     public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception {
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         return mapper.selectBoardList(cri);
@@ -42,5 +42,5 @@ public class BoardDAOService implements BoardDAO{
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         return mapper.selectBoardByCode(boardVO);
     }
-
+   
 }
