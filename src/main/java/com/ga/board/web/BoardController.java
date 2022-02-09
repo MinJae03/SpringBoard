@@ -113,4 +113,16 @@ public class BoardController {
         return "redirect:/board/boardList.do";
         
     }
+    /** 
+     * 게시글 삭제
+     */
+    @RequestMapping(value="/board/deleteBoard.do")
+    public String deleteBoard(@ModelAttribute("boardVO") BoardVO boardVO, Model model) {
+    	try {
+			boardServiceImpl.deleteBoard(boardVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return "redirect:/board/boardList.do";
+    }
 }

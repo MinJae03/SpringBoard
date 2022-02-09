@@ -60,6 +60,9 @@
 							<a href='#' onClick='fn_update()' class="btn">수정</a> 
 						</c:if>
 						<a href='#' onClick='fn_cancel()' class="btn">목록</a>
+						<c:if test="${sessionScope.userName==result.writer}">
+							<a href='#' onClick='fn_delete()' class="btn">삭제</a>
+						</c:if>
 					</div>	
 				</div>
 			</div>
@@ -93,6 +96,13 @@
 				form.action = "<c:url value='/board/relayForm.do'/>";
 				form.submit();
 
+			}
+			//삭제
+			function fn_delete() {
+				var form = document.getElementById("viewForm");
+				
+				form.action = "<c:url value='/board/deleteBoard.do'/>";
+				form.submit();
 			}
 		</script>
 	</div>
