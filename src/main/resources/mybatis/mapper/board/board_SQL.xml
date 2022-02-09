@@ -8,7 +8,7 @@
     <select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         SELECT @ROWNUM:=@ROWNUM+1 AS num, A.*
-		FROM board as A, (SELECT @ROWNUM:=0) R ORDER BY num DESC LIMIT #{pageStart}, #{perPageNum}
+		FROM board as A, (SELECT @ROWNUM:=0) as R ORDER BY num DESC LIMIT #{pageStart}, #{perPageNum}
         ]]>
     </select>
     

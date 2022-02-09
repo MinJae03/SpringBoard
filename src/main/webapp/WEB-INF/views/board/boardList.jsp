@@ -20,23 +20,26 @@
 			<table>
 				<thead>
 					<tr>
-						<th>번호</th>
+						<th>게시글 번호</th>
 						<th>제목</th>
 						<th>작성자</th>
-						<th>날짜</th>
+						<th>작성/수정일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="result" items="${list}" varStatus="status">
 						<tr>
 							<td>
-							<fmt:formatNumber type="number" maxFractionDigits="0"  value="${result.num}"/>
-							<!--<c:out value="${result.num}" />-->
+								<fmt:formatNumber type="number" maxFractionDigits="0"  value="${result.num}"/>
+								<!--<c:out value="${result.num}" />-->
 							</td>
 							<td><a href='#' onClick='fn_view(${result.code})'><c:out
 										value="${result.title }" /></a></td>
 							<td><c:out value="${result.writer }" /></td>
-							<td><c:out value="${result.reg_datetime }" /></td>
+							<td>
+								<fmt:formatDate value="${result.reg_datetime }" pattern="yyyy년 MM월 dd일 K시 m분"/>
+								<%-- <c:out value="${result.reg_datetime }" /> --%>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -23,14 +23,31 @@
 					<table>
 						<tr>
 							<th>제목</th>
-							<td><input style="width: 500px" type="text" id="title"
-								name="title" value="${result.title }" /></td>
+							<c:choose>
+								<c:when test="${sessionScope.userName==result.writer}">
+									<td><input style="width: 500px" type="text" id="title"
+									name="title" value="${result.title }" /></td>
+								</c:when>
+								<c:when test="${sessionScope.userName!=result.writer}">
+									<td><input style="width: 500px" type="text" id="title"
+									name="title" value="${result.title }" readonly/></td>
+								</c:when>
+							</c:choose>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea style="width: 500px" rows="10" cols="10"
+							<c:choose>
+								<c:when test="${sessionScope.userName==result.writer}">
+									<td><textarea style="width: 500px" rows="10" cols="10"
 									id="content" name="content"><c:out
 										value="${result.content }" /></textarea></td>
+								</c:when>
+								<c:when test="${sessionScope.userName!=result.writer}">
+									<td><textarea readonly style="width: 500px" rows="10" cols="10"
+										id="content" name="content"><c:out
+											value="${result.content }"/></textarea></td>
+								</c:when>
+							</c:choose>
 						</tr>
 						<tr>
 							<th>작성자</th>

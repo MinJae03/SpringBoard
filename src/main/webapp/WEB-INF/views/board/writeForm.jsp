@@ -44,11 +44,19 @@
 <script>
 //글쓰기
 function fn_addtoBoard(){
+    var title=$("#title").val();
+    var content=$("#content").val();
+    if(title==""){
+    	alert("제목을 입력하세요");
+    }else if(content==""){
+    	alert("내용을 입력하세요")
+    }else{
+    	var form = document.getElementById("writeForm");
+        
+        form.action = "<c:url value='/board/write.do'/>";
+        form.submit();
+    }
     
-    var form = document.getElementById("writeForm");
-    
-    form.action = "<c:url value='/board/write.do'/>";
-    form.submit();
     
 }
  
