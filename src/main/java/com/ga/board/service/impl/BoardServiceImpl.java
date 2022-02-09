@@ -17,9 +17,10 @@ public class BoardServiceImpl implements BoardService{
     
     @Override
     public List<Map<String, Object>> selectBoardList(Criteria cri) throws Exception {
-        List<Map<String, Object>> list = null;
-        list = boardDAOService.selectBoardList(cri);
-        return list;
+//        List<Map<String, Object>> list = null;
+//        list = boardDAOService.selectBoardList(cri);
+//        return list;
+    	return boardDAOService.selectBoardList(cri);
     }
  
     @Override

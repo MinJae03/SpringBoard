@@ -33,20 +33,15 @@ public class BoardController {
      */
     @RequestMapping(value="/board/boardList.do")
     public ModelAndView boardList(Criteria cri) throws Exception{
-//        PageMaker pageMaker=new PageMaker();
-//        pageMaker.setCri(cri);
-//		pageMaker.setTotalCount(/* 13 */ boardServiceImpl.countBoardListTotal() );
-//        
-//        List<Map<String, Object>> list = boardServiceImpl.selectBoardList(cri);
-//        
-//        model.addAttribute("list", list);
-//        model.addAttribute("pageMaker",pageMaker);
-//        return "board/boardList";
     	ModelAndView mav = new ModelAndView("/board/boardList");
     	
     	PageMaker pageMaker = new PageMaker();
     	pageMaker.setCri(cri);
-    	pageMaker.setTotalCount(100);
+    	pageMaker.setTotalCount(13);
+    	
+    	List<Map<String, Object>> list = boardServiceImpl.selectBoardList(cri);
+    	mav.addObject("list", list);
+    	mav.addObject("pageMaker", pageMaker);
     	return mav;
     }
     

@@ -5,7 +5,7 @@
     
 <mapper namespace="com.ga.board.service.mapper.BoardMapper">
     
-    <select id="selectBoardList" parameterType="com.ga.board.service.BoardVO" resultType="com.ga.board.service.BoardVO">
+    <select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
         SELECT @ROWNUM:=@ROWNUM+1 AS num, A.*
 		FROM board as A, (SELECT @ROWNUM:=0) R ORDER BY num DESC LIMIT #{pageStart}, #{perPageNum}

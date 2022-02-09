@@ -27,9 +27,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="result" items="${list }" varStatus="status">
+					<c:forEach var="result" items="${list}" varStatus="status">
 						<tr>
-							<td><c:out value="${result.code }" /></td>
+							<td><c:out value="${result.num}" /></td>
 							<td><a href='#' onClick='fn_view(${result.code})'><c:out
 										value="${result.title }" /></a></td>
 							<td><c:out value="${result.writer }" /></td>
@@ -46,17 +46,17 @@
 		<ul class="btn-group pagination">
 		    <c:if test="${pageMaker.prev }">
 		    	<li>
-		        	<a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }"/>'>이전</a>
+		        	<a href='<c:url value="/board/boardList.do?page=${pageMaker.startPage-1 }"/>'>이전</a>
 		    	</li>
 		    </c:if>
 		    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
 			    <li>
-			        <a href='<c:url value="/board/boardList?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
+			        <a href='<c:url value="/board/boardList.do?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
 			    </li>
 		    </c:forEach>
 			    <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 			    <li>
-			        <a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'>다음</a>
+			        <a href='<c:url value="/board/boardList.do?page=${pageMaker.endPage+1 }"/>'>다음</a>
 			    </li>
 	    	</c:if>
 		</ul>
