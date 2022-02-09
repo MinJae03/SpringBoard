@@ -42,5 +42,11 @@ public class BoardDAOService implements BoardDAO{
         BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
         return mapper.selectBoardByCode(boardVO);
     }
+
+	@Override
+	public int countBoardList() throws Exception {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.countBoardList();
+	}
    
 }

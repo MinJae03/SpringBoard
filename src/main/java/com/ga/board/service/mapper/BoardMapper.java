@@ -22,4 +22,7 @@ public interface BoardMapper {
  
     // 게시물 조회
     public BoardVO selectBoardByCode(BoardVO boardVO) throws Exception;
+    
+    //총 게시물 갯수
+    public int countBoardList() throws Exception;
 }

@@ -44,4 +44,7 @@ public interface BoardService {
      * @throws Exception
      */
     public BoardVO selectBoardByCode(BoardVO boardVO) throws Exception;
+    
+    //총 게시물 갯수
+    int countBoardListTotal() throws Exception;
 }

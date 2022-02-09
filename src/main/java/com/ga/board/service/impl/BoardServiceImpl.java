@@ -45,4 +45,9 @@ public class BoardServiceImpl implements BoardService{
         
         return resultVO; 
     }
+    //총 게시물 갯수
+	@Override
+	public int countBoardListTotal() throws Exception {
+		return boardDAOService.countBoardList();
+	}
 }

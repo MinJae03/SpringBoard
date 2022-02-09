@@ -93,3 +93,14 @@ td{
 table{
 	margin-bottom: 50px;
 }
+.btn-group{
+	text-align: center;
+}
+.btn-group li{
+	display: inline-block;
+}
+.btn-group li a{
+	border: #777 solid 1px;
+	background: rgb(247,247,247);
+	padding: 4px 8px;
+}

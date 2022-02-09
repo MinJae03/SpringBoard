@@ -39,8 +39,10 @@
 						</tr>
 					</table>
 					<div>
-						<a href='#' onClick='fn_update()' class="btn">수정</a> <a href='#'
-							onClick='fn_cancel()' class="btn">목록</a>
+						<c:if test="${sessionScope.userName==result.writer}">
+							<a href='#' onClick='fn_update()' class="btn">수정</a> 
+						</c:if>
+						<a href='#' onClick='fn_cancel()' class="btn">목록</a>
 					</div>	
 				</div>
 			</div>

@@ -44,4 +44,7 @@ public interface BoardDAO {
      * @throws Exception
      */
     BoardVO selectBoardByCode(BoardVO boardVO) throws Exception;
+    
+    //총 게시물 갯수
+    int countBoardList() throws Exception;
 }

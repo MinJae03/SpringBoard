@@ -29,7 +29,10 @@
 				<tbody>
 					<c:forEach var="result" items="${list}" varStatus="status">
 						<tr>
-							<td><c:out value="${result.num}" /></td>
+							<td>
+							<fmt:formatNumber type="number" maxFractionDigits="0"  value="${result.num}"/>
+							<!--<c:out value="${result.num}" />-->
+							</td>
 							<td><a href='#' onClick='fn_view(${result.code})'><c:out
 										value="${result.title }" /></a></td>
 							<td><c:out value="${result.writer }" /></td>
@@ -40,8 +43,8 @@
 			</table>
 
 			<div>
-				<a href='#' onClick='fn_write()' class='writebtn'>글쓰기</a> <a
-					href='/member/list.do' class='writebtn'>회원목록</a>
+				<a href='#' onClick='fn_write()' class='writebtn'>글쓰기</a>
+				<a href='/member/list.do' class='writebtn'>회원목록</a>
 			</div>
 		<ul class="btn-group pagination">
 		    <c:if test="${pageMaker.prev }">
